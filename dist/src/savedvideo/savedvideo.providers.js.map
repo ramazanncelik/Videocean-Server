@@ -1,0 +1,1 @@
+{"version":3,"file":"savedvideo.providers.js","sourceRoot":"","sources":["../../../src/savedvideo/savedvideo.providers.ts"],"names":[],"mappings":";;;AACA,0EAAiE;AAEpD,QAAA,oBAAoB,GAAG;IAClC;QACE,OAAO,EAAE,kBAAkB;QAC3B,UAAU,EAAE,CAAC,UAAsB,EAAE,EAAE,CAAC,UAAU,CAAC,KAAK,CAAC,YAAY,EAAE,mCAAgB,CAAC;QACxF,MAAM,EAAE,CAAC,qBAAqB,CAAC;KAChC;CACF,CAAC"}
