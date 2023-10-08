@@ -23,10 +23,19 @@ export class AuthController {
         return this.authService.getResetPasswordMail(body);
     }
 
+    @Post("getEmailVerifyMail")
+    async getEmailVerifyMail(@Body() body: any): Promise<Boolean> {
+        return this.authService.getEmailVerifyMail(body);
+    }
+
     @Post("updatePassword")
     async updatePassword(@Body() body: any): Promise<Object> {
-        console.log(body)
         return this.authService.updatePassword(body);
+    }
+
+    @Post("updateEmailVerify")
+    async updateEmailVerify(@Body() body: any): Promise<Object> {
+        return this.authService.updateEmailVerify(body);
     }
 
 }

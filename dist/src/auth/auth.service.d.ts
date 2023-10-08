@@ -10,5 +10,7 @@ export declare class AuthService {
     login(user: UserLoginDto): Promise<any>;
     create(body: UserCreateDto): Promise<Object>;
     getResetPasswordMail(data: any): Promise<Object>;
+    getEmailVerifyMail(data: any): Promise<Boolean>;
     updatePassword(body: any): Promise<Object>;
+    updateEmailVerify(body: any): Promise<Object>;
 }

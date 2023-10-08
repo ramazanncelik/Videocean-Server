@@ -6,9 +6,9 @@ const dotenv = require("dotenv");
 async function bootstrap() {
     dotenv.config();
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 9999;
     const corsOptions = {
-        origin: 'http://localhost:3000',
+        origin: 'https://videocean.vercel.app',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization'],
     };

@@ -6,7 +6,7 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 async function bootstrap() {
   dotenv.config();
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 9999;
 
   const corsOptions: CorsOptions = {
     origin: 'https://videocean.vercel.app', // İzin verilen kaynak (origin)

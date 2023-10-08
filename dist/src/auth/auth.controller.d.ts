@@ -7,5 +7,7 @@ export declare class AuthController {
     login(body: UserLoginDto): Promise<UserModel>;
     create(body: UserCreateDto): Promise<Object>;
     getResetPasswordMail(body: any): Promise<Object>;
+    getEmailVerifyMail(body: any): Promise<Boolean>;
     updatePassword(body: any): Promise<Object>;
+    updateEmailVerify(body: any): Promise<Object>;
 }

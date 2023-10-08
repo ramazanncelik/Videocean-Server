@@ -99,7 +99,7 @@ let AuthService = class AuthService {
                 Email: data.to
             }).exec();
             if (existUser) {
-                const resetLink = `https://localhost:3000/auth/resetpassword?Email=${data.to}&ConfirmationCode=${existUser.ConfirmationCode}`;
+                const resetLink = `https://videocean-server.adaptable.app/auth/resetpassword?Email=${data.to}&ConfirmationCode=${existUser.ConfirmationCode}`;
                 const html = `<p>Merhaba ${existUser.NickName},</p>
              <p>Şifrenizi sıfırlamak için aşağıdaki linke tıklayabilirsiniz:</p>
              <a href="${resetLink}">${resetLink}</a>`;
@@ -114,12 +114,46 @@ let AuthService = class AuthService {
             return await { success: false, response: "something went wrong while login process!", expection: error };
         }
     }
+    async getEmailVerifyMail(data) {
+        try {
+            const existUser = await this.userMongo.findOne({
+                Email: data.to
+            }).exec();
+            if (existUser) {
+                const emailVerifyLink = `https://localhost:3000/auth/emailverify?Email=${data.to}&ConfirmationCode=${existUser.ConfirmationCode}`;
+                const html = `<p>Hi ${existUser.NickName},</p>
+             <p>${data.text}:</p>
+             <a href="${emailVerifyLink}">${emailVerifyLink}</a>`;
+                await this.transporter.sendMail(Object.assign(Object.assign({ from: process.env.EMAIL }, data), { html: html }));
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (error) {
+            return false;
+        }
+    }
     async updatePassword(body) {
         body.Password = await this.convertToHash(body.Password);
         const userExist = await this.userMongo.findOne({ Email: body.Email, ConfirmationCode: body.ConfirmationCode }).exec();
         if (userExist) {
             await this.userMongo.findByIdAndUpdate(userExist._id, {
                 Password: body.Password,
+                ConfirmationCode: (Math.floor(Math.random() * 90000) + 10000).toString(),
+            }, { new: true });
+            return { success: true, userExist: true };
+        }
+        else {
+            return { success: false, userExist: false };
+        }
+    }
+    async updateEmailVerify(body) {
+        const userExist = await this.userMongo.findOne({ Email: body.Email, ConfirmationCode: body.ConfirmationCode }).exec();
+        if (userExist) {
+            await this.userMongo.findByIdAndUpdate(userExist._id, {
+                EmailVerify: true,
                 ConfirmationCode: (Math.floor(Math.random() * 90000) + 10000).toString(),
             }, { new: true });
             return { success: true, userExist: true };

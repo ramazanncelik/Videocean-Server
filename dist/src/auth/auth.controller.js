@@ -30,9 +30,14 @@ let AuthController = class AuthController {
     async getResetPasswordMail(body) {
         return this.authService.getResetPasswordMail(body);
     }
+    async getEmailVerifyMail(body) {
+        return this.authService.getEmailVerifyMail(body);
+    }
     async updatePassword(body) {
-        console.log(body);
         return this.authService.updatePassword(body);
+    }
+    async updateEmailVerify(body) {
+        return this.authService.updateEmailVerify(body);
     }
 };
 exports.AuthController = AuthController;
@@ -58,12 +63,26 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "getResetPasswordMail", null);
 __decorate([
+    (0, common_1.Post)("getEmailVerifyMail"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getEmailVerifyMail", null);
+__decorate([
     (0, common_1.Post)("updatePassword"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "updatePassword", null);
+__decorate([
+    (0, common_1.Post)("updateEmailVerify"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "updateEmailVerify", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
