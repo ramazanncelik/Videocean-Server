@@ -37,7 +37,7 @@ export class UserService {
   async searchUser(searchText: string): Promise<Object> {
     const users = await this.userMongo.find().exec();
     const wantedUser = await users.filter(user => user.NickName === searchText);
-    if (users && wantedUser) {
+    if (wantedUser) {
       return { success: true, result: wantedUser };
     } else {
       return { success: false, result: [] };
