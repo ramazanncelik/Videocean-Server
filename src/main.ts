@@ -9,7 +9,7 @@ async function bootstrap() {
   const port = process.env.PORT || 9999;
 
   const corsOptions: CorsOptions = {
-    origin: 'https://videocean.vercel.app', // İzin verilen kaynak (origin)
+    origin: 'http://localhost:3000', // İzin verilen kaynak (origin)
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // İzin verilen HTTP metodları
     allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
   };
