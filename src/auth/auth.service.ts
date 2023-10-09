@@ -122,7 +122,7 @@ export class AuthService {
                 Email: data.to
             }).exec();
             if (existUser) {
-                const emailVerifyLink = `https://localhost:3000/auth/emailverify?Email=${data.to}&ConfirmationCode=${existUser.ConfirmationCode}`;
+                const emailVerifyLink = `https://videocean-server.adaptable.app/auth/emailverify?Email=${data.to}&ConfirmationCode=${existUser.ConfirmationCode}`;
 
                 const html = `<p>Hi ${existUser.NickName},</p>
              <p>${data.text}:</p>
